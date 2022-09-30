@@ -1,0 +1,15 @@
+<IfModule mod_negotiation.c>
+  Options -MultiViews
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+
+    RewriteCond %{HTTP} off 
+    RewriteRule ^(.*)$ http://%{HTTP_HOST}%{REQUEST_URI}%vue-2-vuetify-starter [L,R=301]
+</IfModule>
